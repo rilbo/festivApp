@@ -31,6 +31,12 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+    public function beforeFilter(\Cake\Event\EventInterface $e)
+    {
+        parent::beforeFilter($e);
+        $this->Authentication->addUnauthenticatedActions(['index']);
+    }
+
     /**
      * Displays a view
      *
@@ -43,8 +49,7 @@ class PagesController extends AppController
      *   be found and not in debug mode.
      * @throws \Cake\View\Exception\MissingTemplateException In debug mode.
      */
-    public function display(string ...$path): ?Response
-    {
+    public function display(string ...$path): ?Response{
         if (!$path) {
             return $this->redirect('/');
         }
@@ -69,5 +74,13 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+
+
+    public function index(){
+        $title = 'Bienvenue';
+        $desc = 'L\'application conçu par un festivalier pour les festivaliers ';
+        $this->set(compact('title', 'desc'));
     }
 }

@@ -20,11 +20,18 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
+    <?php if ($this->request->getAttribute('identity') != null) :?>
     <header>
-        <nav class="top-nav">
-            
+        <nav class="bottom-nav">
+            <ul>
+                <li><?= $this->Html->link('Home', ['controller' => 'Posts', 'action' => 'index']); ?></li>
+                <li><?= $this->Html->link('Search', ['controller' => 'Search', 'action' => 'index']); ?></li>
+                <li><?= $this->Html->link('Profil', ['controller' => 'Users', 'action' => 'view', $this->request->getAttribute('identity')->id]); ?></li>
+                <li><?= $this->Html->link('Add', ['controller' => 'Posts', 'action' => 'add'], ['class' => 'add']); ?></li>
+            </ul>
         </nav>
     </header>
+    <?php endif ; ?>
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>
