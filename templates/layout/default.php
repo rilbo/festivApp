@@ -14,6 +14,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 
     <?= $this->Html->css(['style']) ?>
+   
+    <?= $this->Html->meta('csrfToken', $this->request->getAttribute('csrfToken')); ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

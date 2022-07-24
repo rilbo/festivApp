@@ -68,8 +68,16 @@ class UsersController extends AppController{
     }
 
     public function view($id){
-        $user = $this->Users->get($id);
-        $this->set(compact('user'));
+        $user = $this->Users->get($id, [
+            'contain' => ['Follows']
+        ]);
+
+        // si l'utilisateur connecté est déjà abonné à cet utilisateur
+        $follow = $this->fetchTable('follows')->findById_userAndId_user_following($this->request->getAttribute('identity')->id, $id)->first();
+
+
+        $idUserPage = $id;
+        $this->set(compact('user', 'idUserPage', 'follow'));
     }
 
     public function edit($id){

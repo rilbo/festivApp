@@ -3,13 +3,14 @@
         <?php
          $img = $user->picture;
             if ($img == null) {?>
-                <div>
-                    <p>default</p>
+                <div class="preview">
                 </div>
             <?php }else{
                 $img = $user->picture;
                 ?>
-                <?= $this->Html->image('pictures/profils/'.$img, ['alt' => 'Profil']); ?>
+                <div class="preview" style="background-image:url('<?= $this->Html->Url->Build('/img/pictures/profils/'.$img.'') ?>');">
+                    
+                </div>
             <?php } ?>
         
     </div>
@@ -21,4 +22,6 @@
     <?= $this->Form->control('email', [ 'label' => 'Adresse mail']); ?>
     <?= $this->Form->button('Modifier');?>
 <?= $this->Form->end(); ?>
+
 </div>
+<?= $this->Html->script(['preview']) ?>

@@ -1,20 +1,22 @@
+<?php
+    $id = $this->request->getAttribute('identity')->id;
+?>
 <div>
     <div>
         <div>
             <!-- profil img -->
             <div>
-                <?php
+            <?php
                 $img = $user->picture;
-                    if ($img == null) {?>
-                        <div>
-                            <p>default</p>
-                        </div>
-                    <?php }else{
-                        $img = $user->picture;
-                        ?>
-                        <?= $this->Html->image('pictures/profils/'.$img, ['alt' => 'Profil']); ?>
-                    <?php } ?>
-                
+                if ($img == null) {?>
+                    <div class="preview">
+                    </div>
+                <?php }else{
+                    $img = $user->picture;
+                    ?>
+                    <div class="preview" style="background-image:url('<?= $this->Html->Url->Build('/img/pictures/profils/'.$img.'') ?>');">
+                    </div>
+                <?php } ?>
             </div>
             <!-- publication -->
             <!-- Follow -->
@@ -36,8 +38,18 @@
             }
             ?>
             <p><?= $desc ?></p>
-            <?= $this->Html->link('Modifier',['controller' => 'Users', 'action' => 'edit',  $this->request->getAttribute('identity')->id, '_full' => true,]);?>
-            <?= $this->Html->link('se déconnecter', ['controller' => 'Users', 'action' => 'logout'], ['class' => 'button']); ?>
+            <?php if ($id == $idUserPage) :?>
+                <?= $this->Html->link('Modifier',['controller' => 'Users', 'action' => 'edit',  $this->request->getAttribute('identity')->id, '_full' => true,]);?>
+                <?= $this->Html->link('se déconnecter', ['controller' => 'Users', 'action' => 'logout'], ['class' => 'button']); ?>
+            <?php else : ?>
+                <?php if ($follow == null) : ?>
+                    <button class="button follow" type="button" onclick="follow(<?= $id?>,<?= $idUserPage?>)">Suivre</button> 
+                <?php else : ?>
+                    <button class="button unfollow" type="button" onclick="unfollow(<?= $id?>,<?= $idUserPage?>)">Ne plus suivre</button>
+                <?php endif; ?>
+            <?php endif ; ?>
+            
         </div>
     </div>
 </div>
+<?= $this->Html->script(['follow.js']) ?>
