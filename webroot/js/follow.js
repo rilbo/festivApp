@@ -54,9 +54,7 @@ async function unfollow(id, idFollow){
             button.innerHTML = 'Suivre';
             button.classList.add('follow');
             button.classList.remove('unfollow');
-            button.addEventListener('click', e => {
-                follow(id, idFollow);
-            });
+            button.attributes.onclick.value = `follow(${id}, ${idFollow})`;
         }
     } catch(e) {
         console.log(e);

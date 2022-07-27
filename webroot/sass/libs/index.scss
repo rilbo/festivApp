@@ -1,0 +1,106 @@
+.container{
+    .back{
+        background: #eb01a5;
+        background-image: linear-gradient(#00000078, #00000087), url('../../img/content/index.jpg'), ; 
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        h1,p{
+            text-align: center;
+            color: #fff;
+        }
+        img{
+            margin-top: 80px;
+        }
+        .prez{
+            margin: 70px 0px;
+            p{
+                font-weight: 600;
+                line-height: 1.5;
+                width: 80%;
+                margin:0 auto;
+                margin-top: 1rem;
+            }
+        }
+        .connect{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            .btn:first-child{
+                margin-bottom: 20px;
+            }
+        }
+    }
+    #login_signin{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        .login,.signup{
+            margin: 70px 0px;
+        }
+        img{
+            margin-top: 80px;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        div{
+            width:100%;
+        }
+    }
+    .copyright{
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        p{
+            color: rgb(166, 166, 166, .5);
+            font-size: 12px;
+        }
+    }
+    form{
+        width: 100%;
+        .input{
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            label{
+                margin-bottom: 5px;
+            }
+            input{
+                border-radius: 10px;
+                border: 1px solid rgb(199, 199, 199);
+                padding: 5px 10px;
+                font-size: 1rem;
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+        .submit{
+            margin-top: 20px;
+        }
+        .btn{
+            width: 100%;
+        }
+        .identity{
+            display: flex;
+            gap: 10px;
+            div{
+                width: calc(50% - 5px);
+
+            }
+        }
+    }
+
+    
+}

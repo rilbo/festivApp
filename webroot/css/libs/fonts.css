@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "openSauceOne";
+  src: url("../../font/OpenSauceOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "OpenSauceOne";
+  src: url("../../font/OpenSauceOne-Light.ttf") format("truetype");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "OpenSauceOne";
+  src: url("../../font/OpenSauceOne-Bold.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "saveurSans";
+  src: url("../../font/SaveurSans-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=fonts.css.map */

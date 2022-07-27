@@ -27,6 +27,32 @@ class UsersTable extends Table
             'cascadeCallbacks' => true,
         ]);
 
+        $this->hasMany('Festivals', [
+            'foreignKey' => 'id_user',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
+
+        $this->hasMany('Posts', [
+            'foreignKey' => 'id_user',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
+
+        // likes
+        $this->hasMany('Likes', [
+            'foreignKey' => 'id_user',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
+
+        // comments
+        $this->hasMany('Comments', [
+            'foreignKey' => 'id_user',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
+
         // $this->hasMany('Messages', [
         //     'foreignKey' => 'receiver_id',
         //     'dependent' => true,

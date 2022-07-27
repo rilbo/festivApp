@@ -41,6 +41,10 @@
             <?php if ($id == $idUserPage) :?>
                 <?= $this->Html->link('Modifier',['controller' => 'Users', 'action' => 'edit',  $this->request->getAttribute('identity')->id, '_full' => true,]);?>
                 <?= $this->Html->link('se déconnecter', ['controller' => 'Users', 'action' => 'logout'], ['class' => 'button']); ?>
+                <!-- si il est admin  -->
+                <?php if ($this->request->getAttribute('identity')->admin == 1) :?>
+                    <?= $this->Html->link('Dashboard', ['controller' => 'Users', 'action' => 'dashboard', '_full' => true,]);?>
+                <?php endif; ?>
             <?php else : ?>
                 <?php if ($follow == null) : ?>
                     <button class="button follow" type="button" onclick="follow(<?= $id?>,<?= $idUserPage?>)">Suivre</button> 

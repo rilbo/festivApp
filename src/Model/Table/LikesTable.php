@@ -14,30 +14,15 @@ class LikesTable extends Table
         // pour created & modifief
         $this->addBehavior('Timestamp');
         
+        // pour id_user
+        $this->belongsTo('Users', [
+            'foreignKey' => 'id_user'
+        ]);
 
-        // // les users ont plusieurs liste 
-        // $this->hasMany('Listings', [
-        //     'foreignKey' => 'user_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'receiver_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'sender_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-
-        // $this->hasMany('Notifications', [
-        //     'foreignKey' => 'user_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
+        // pour id_post
+        $this->belongsTo('Posts', [
+            'foreignKey' => 'id_post'
+        ]);
         
     }
 }

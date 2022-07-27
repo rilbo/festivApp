@@ -119,6 +119,17 @@ class UsersController extends AppController{
         $this->set(compact('user'));
     }
 
+    public function dashboard(){
+         if ($this->request->getAttribute('identity')->admin == 1){
+            $user = $this->Users->get($this->request->getAttribute('identity')->id, [
+                'contain' => ['Follows']
+            ]);
+            $this->set(compact('user'));
+         }else{
+            return $this->redirect(['controller' => 'Users', 'action' => 'view', $this->request->getAttribute('identity')->id]);
+         }
+    }
+
     function compressImg($a, $b){
         // detection png ou jpg
         if ($b = 'image/png'){ 

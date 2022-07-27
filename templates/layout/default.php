@@ -23,13 +23,24 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
     <?php if ($this->request->getAttribute('identity') != null) :?>
+    <?php
+                    $imgProfils = $this->Html->Url->Build('/img/pictures/profils/'.$this->request->getAttribute("identity")->picture);
+                ?>
     <header>
         <nav class="bottom-nav">
             <ul>
-                <li><?= $this->Html->link('Home', ['controller' => 'Posts', 'action' => 'index']); ?></li>
-                <li><?= $this->Html->link('Search', ['controller' => 'Search', 'action' => 'index']); ?></li>
-                <li><?= $this->Html->link('Profil', ['controller' => 'Users', 'action' => 'view', $this->request->getAttribute('identity')->id]); ?></li>
-                <li><?= $this->Html->link('Add', ['controller' => 'Posts', 'action' => 'add'], ['class' => 'add']); ?></li>
+                <li>
+                    <?= $this->Html->link($this->Html->image('icons/header/home.svg', ['alt' => 'accueil']), ['controller' => 'Posts', 'action' => 'index'], ['escape' => false]); ?>
+                </li>
+                <li>
+                    <?= $this->Html->link($this->Html->image('icons/header/search.svg', ['alt' => 'recherche']), ['controller' => 'Search', 'action' => 'index'], ['escape' => false]); ?>
+                </li>
+                <li>
+                    <?= $this->Html->link('<div class="profil-navbar" style="background-image:url('.$imgProfils.');"></div>', ['controller' => 'Users', 'action' => 'view', $this->request->getAttribute('identity')->id], ['escape' => false]); ?>
+                </li>
+                <li>
+                    <?= $this->Html->link($this->Html->image('icons/header/add.svg', ['alt' => 'ajouter un post']), ['controller' => 'Posts', 'action' => 'add'], ['class' => 'add', 'escape' => false]); ?>
+                </li>
             </ul>
         </nav>
     </header>

@@ -1,33 +1,7 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
-body{
-    max-width: 580px;
-    margin: 0 auto;
-    position: relative;
-    padding: 10px;
-    min-height: 100vh;
-}
-
-li{
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-}
-
-button{
-    cursor: pointer;
-}
-
-
-
-img{
-    width: 100px;
-}
+@import "libs/fonts.scss";
+@import "libs/global.scss";
+@import "libs/index.scss";
+@import "libs/posts.scss";
 
 .message{
     position: absolute;
@@ -38,28 +12,6 @@ img{
     background-color: #f2f2f2;
 }
 
-header{
-    max-width: 580px;
-    height: 70px;
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    border-radius: 20px 20px 0px 0px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    z-index: 2;
-    .bottom-nav{
-        height: 100%;
-        ul{
-            height: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-    }
-}
-
 .preview{
     height: 150px;
     width: 150px;
@@ -68,4 +20,11 @@ header{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.input-other{
+    display: none;
+    &.active{
+        display: block;
+    }
 }
