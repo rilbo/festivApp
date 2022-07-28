@@ -9,7 +9,7 @@ class CommentsController extends AppController{
 
     public function view($idPost){
         $comments = $this->Comments->find('all', [
-            'where' => ['Comments.id_post' => $idPost],
+            'conditions' => ['comments.id_post' => $idPost],
             'contain' => ['Users'],
         ]);
         $this->set(compact('comments', 'idPost'));
