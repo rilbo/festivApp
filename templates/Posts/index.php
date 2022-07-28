@@ -9,6 +9,7 @@
 <div class="feed">
 
     <?php $count = 0; ?>
+    <?php $imgProfils = $this->Html->Url->Build('/img/pictures/profils/'.$this->request->getAttribute("identity")->picture); ?>
     <?php foreach ($posts as $post) : ?>
         
         <?php
@@ -61,6 +62,17 @@
                 <p>
                     <?= $post->description ?>
                 </p>
+            </div>
+            <div>
+                <div>
+                    <div>
+                        <?= $this->Html->link("Voir les commentaires", ['controller' => 'Comments', 'action' => 'view', $post->id], ['escape' => false]); ?>
+                    </div>
+                    <div>
+                        <?= $this->Html->image($imgProfils, ['alt' => 'Photo profil pour les commentaires']); ?>
+                        <?= $this->Html->link('<input type="text" placeholder="Votre commentaires">', ['controller' => 'Comments', 'action' => 'add', $post->id], ['escape' => false]); ?>
+                    </div>
+                </div>
             </div>
             <div>
                 <!-- Commentaires -->

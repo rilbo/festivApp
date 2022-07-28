@@ -14,30 +14,17 @@ class CommentsTable extends Table
         // pour created & modifief
         $this->addBehavior('Timestamp');
         
+        // pour la relation avec les posts
+        $this->belongsTo('Posts', [
+            'foreignKey' => 'id_post',
+            'joinType' => 'INNER',
+        ]);
 
-        // // les users ont plusieurs liste 
-        // $this->hasMany('Listings', [
-        //     'foreignKey' => 'user_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'receiver_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'sender_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-
-        // $this->hasMany('Notifications', [
-        //     'foreignKey' => 'user_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
+        // pour la relation avec les users
+        $this->belongsTo('Users', [
+            'foreignKey' => 'id_user',
+            'joinType' => 'INNER',
+        ]);
         
     }
 }

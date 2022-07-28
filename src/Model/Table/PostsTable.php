@@ -32,6 +32,13 @@ class PostsTable extends Table
             'dependent' => true,
             'cascadeCallbacks' => true,
         ]);
+
+        //comments
+        $this->hasMany('Comments', [
+            'foreignKey' => 'id_post',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
         
     }
 }
