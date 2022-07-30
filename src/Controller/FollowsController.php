@@ -23,7 +23,8 @@ class FollowsController extends AppController{
                 if ($this->Follows->save($follow)) {
                     $notif->title = "Nouvel abonné";
                     $notif->content = "@".$this->request->getAttribute('identity')->pseudo." s'est abonné à vous";
-                    $notif->id_user = $data['id_user_following'];
+                    $notif->id_user = $this->request->getAttribute('identity')->id;
+                    $notif->id_user_receiver = $data['id_user_following'];
                     $notif->id_post = null;
                     $notif->type = 1 ;
                     $this->fetchTable("Notifications")->save($notif);

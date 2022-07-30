@@ -6,9 +6,28 @@ use Cake\Event\EventInterface;
 class PostsController extends AppController{
 
     public function index(){
-        $posts = $this->Posts->find('all', [
-            'contain' => ['Users', 'Festivals', 'Likes']
-        ]);
+        $posts = $this->Posts->find('all')
+            ->contain(['Users', 'Festivals', 'Likes'])
+            ->order(['Posts.created' => 'DESC']);
+
+        // recuperer tous les post en fonction des utilisateurs qu'une personne connecté suit 
+
+        // variable id de la personne connecté 
+        $id = $this->request->getAttribute('identity')->id;
+
+        $follow = $this->Posts->Users->Follows->find('all')
+            ->where(['follows.id_user' => $id])
+            ->contain(['Users']);
+
+        // je recupere dans $follow l'id_user_following de la personne connecté
+        $idTab = [];
+        foreach ($follow as $f) {
+            $id_following = $f->id_user_following;
+            $idTab[] = $id_following;
+        }
+        $idTab[] = $id;
+        $posts = $posts->where(['posts.id_user IN' => $idTab]);
+
         $this->set(compact('posts'));
     } 
 

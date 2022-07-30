@@ -21,7 +21,8 @@ class LikesController extends AppController{
                     $notif->title = "Nouveau like";
                     $notif->content = "@".$this->request->getAttribute('identity')->pseudo . " a aimé votre post";
                     // recuperer l'id de l'utilsateur qui a poster le post en fonction de id_post pour le mettre dans la notification
-                    $notif->id_user = $this->fetchTable("Posts")->findById($data['id_post'])->first()->id_user;
+                    $notif->id_user = $this->request->getAttribute('identity')->id;
+                    $notif->id_user_receiver = $this->fetchTable("Posts")->findById($data['id_post'])->first()->id_user;
                     $notif->id_post = $data['id_post'];
                     $notif->type = 2 ;
                     if ($this->fetchTable("Notifications")->save($notif)){
