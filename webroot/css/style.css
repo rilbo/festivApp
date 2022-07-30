@@ -47,7 +47,7 @@ button {
   cursor: pointer;
 }
 
-.comments img, .add-comments img {
+.comments img, .add-comments img, .notification img {
   width: 100px;
 }
 

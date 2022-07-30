@@ -19,7 +19,14 @@ class FollowsController extends AppController{
             }else{
                 $follow = $this->Follows->patchEntity($follow, $this->request->getData());
                 $follow->id_user = $this->request->getAttribute('identity')->id;
+                $notif = $this->fetchTable("Notifications")->newEmptyEntity();
                 if ($this->Follows->save($follow)) {
+                    $notif->title = "Nouvel abonné";
+                    $notif->content = "@".$this->request->getAttribute('identity')->pseudo." s'est abonné à vous";
+                    $notif->id_user = $data['id_user_following'];
+                    $notif->id_post = null;
+                    $notif->type = 1 ;
+                    $this->fetchTable("Notifications")->save($notif);
                     $this->Flash->success('You are now following this user');
                 }else{
                     $this->Flash->error('An error occured');

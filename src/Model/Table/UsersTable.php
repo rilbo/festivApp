@@ -53,24 +53,18 @@ class UsersTable extends Table
             'cascadeCallbacks' => true,
         ]);
 
-        
+        // notifications
+        $this->hasMany('Notifications', [
+            'foreignKey' => 'id_user',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
 
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'receiver_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'sender_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-
-        // $this->hasMany('Notifications', [
-        //     'foreignKey' => 'user_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
+        $this->hasMany('Notifications', [
+            'foreignKey' => 'id_user_receiver',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
         
     }
 }

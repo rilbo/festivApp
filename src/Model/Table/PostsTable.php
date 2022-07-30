@@ -39,6 +39,13 @@ class PostsTable extends Table
             'dependent' => true,
             'cascadeCallbacks' => true,
         ]);
+
+        // notifications
+        $this->hasMany('Notifications', [
+            'foreignKey' => 'id_post',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
         
     }
 }

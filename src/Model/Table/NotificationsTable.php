@@ -15,29 +15,22 @@ class NotificationsTable extends Table
         $this->addBehavior('Timestamp');
         
 
-        // // les users ont plusieurs liste 
-        // $this->hasMany('Listings', [
-        //     'foreignKey' => 'user_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
+        $this->belongsTo('Users', [
+            'foreignKey' => 'id_user',
+            'joinType' => 'INNER',
+        ]);
 
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'receiver_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'sender_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
+        $this->belongsTo('Posts', [
+            'foreignKey' => 'id_post',
+            'joinType' => 'LEFT',
+        ]);
 
-        // $this->hasMany('Notifications', [
-        //     'foreignKey' => 'user_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
+        $this->belongsTo('Users', [
+            'foreignKey' => 'id_user_receiver',
+            'joinType' => 'INNER',
+        ]);
+
+
         
     }
 }
