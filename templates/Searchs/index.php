@@ -1,3 +1,9 @@
+<div id="header-custom">
+    <div>
+        <!-- recuperer le pseudo de l'utilisateur -->
+        <h2>Recherche</h2>
+    </div>
+</div>
 <div>
     <!-- search fields -->
     <?= $this->Form->create(null, ['type' => 'post']) ?>

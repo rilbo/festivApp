@@ -106,7 +106,23 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
+    > div:first-child{
+        padding-left: 30px;
+    }
+    > div:last-child{
+        padding-right: 30px;
+    }
+}
 
+#header-custom{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    > div:first-child{
+        padding-left: 30px;
+    }
+    > div:last-child{
+        padding-right: 30px;
+    }
 }

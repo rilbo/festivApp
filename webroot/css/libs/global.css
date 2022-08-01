@@ -104,7 +104,24 @@ header .profil-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+#navbar-top > div:first-child {
   padding-left: 30px;
+}
+#navbar-top > div:last-child {
+  padding-right: 30px;
+}
+
+#header-custom {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header-custom > div:first-child {
+  padding-left: 30px;
+}
+#header-custom > div:last-child {
   padding-right: 30px;
 }
 

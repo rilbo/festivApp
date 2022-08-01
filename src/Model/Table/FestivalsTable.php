@@ -26,6 +26,13 @@ class FestivalsTable extends Table
             'dependent' => true,
             'cascadeCallbacks' => true,
         ]);
+
+        //request
+        $this->hasMany('Requests', [
+            'foreignKey' => 'id_festival',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
         
     }
 }

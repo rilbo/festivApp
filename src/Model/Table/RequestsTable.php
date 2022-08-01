@@ -14,30 +14,12 @@ class RequestsTable extends Table
         // pour created & modifief
         $this->addBehavior('Timestamp');
         
-
-        // // les users ont plusieurs liste 
-        // $this->hasMany('Listings', [
-        //     'foreignKey' => 'user_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'receiver_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-        // $this->hasMany('Messages', [
-        //     'foreignKey' => 'sender_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
-
-        // $this->hasMany('Notifications', [
-        //     'foreignKey' => 'user_id',
-        //     'dependent' => true,
-        //     'cascadeCallbacks' => true,
-        // ]);
+        // pour les clés étrangères
+        // festivals
+        $this->belongsTo('Festivals', [
+            'foreignKey' => 'id_festival',
+            'joinType' => 'INNER',
+        ]);
         
     }
 }

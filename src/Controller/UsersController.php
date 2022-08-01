@@ -74,10 +74,15 @@ class UsersController extends AppController{
 
         // si l'utilisateur connecté est déjà abonné à cet utilisateur
         $follow = $this->fetchTable('follows')->findById_userAndId_user_following($this->request->getAttribute('identity')->id, $id)->first();
+        $posts = $this->Users->Posts->findById_user($id)->orderDesc('created')->all();
 
+        // Stats
+        $followers = $this->fetchTable('follows')->findById_user_following($id)->count();
+        $following = $this->fetchTable('follows')->findById_user($id)->count();
+        $postsCount = $this->Users->Posts->findById_user($id)->count();
 
         $idUserPage = $id;
-        $this->set(compact('user', 'idUserPage', 'follow'));
+        $this->set(compact('user', 'idUserPage', 'follow', 'posts', 'followers', 'following', 'postsCount'));
     }
 
     public function edit($id){
@@ -102,6 +107,7 @@ class UsersController extends AppController{
 						unlink(WWW_ROOT.'img/pictures/profils/'.$oldname);
 					}
                     $this->request->getData('image')->moveTo(WWW_ROOT.'img/pictures/profils/'.$name);
+                    $this->request->getAttribute('identity')->picture = $name;
                     $this->Flash->success('Your account has modified');
                     return $this->redirect(['controller' => 'Users', 'action' => 'view', $user->id]);
                 }
@@ -121,10 +127,19 @@ class UsersController extends AppController{
 
     public function dashboard(){
          if ($this->request->getAttribute('identity')->admin == 1){
+
             $user = $this->Users->get($this->request->getAttribute('identity')->id, [
                 'contain' => ['Follows']
             ]);
-            $this->set(compact('user'));
+
+            // touts les requetes en fonction de si finish est true ou false
+            $requests = $this->fetchTable('requests')->find()->where(['finish' => 0])->orderDesc('created')->all();
+            
+            // nombre de publications totales
+            $postsCount = $this->Users->Posts->find('all')->count();
+            // nombre de d'utilisateurs
+            $usersCount = $this->Users->find('all')->count();
+            $this->set(compact('user', 'requests', 'postsCount', 'usersCount'));
          }else{
             return $this->redirect(['controller' => 'Users', 'action' => 'view', $this->request->getAttribute('identity')->id]);
          }

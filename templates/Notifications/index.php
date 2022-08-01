@@ -1,4 +1,8 @@
-
+<div id="header-custom">
+    <div>
+        <h2>Notifications</h2>
+    </div>
+</div>
 <div>
     <?php foreach($notifications as $notification ):?>
         <div class="notification">
