@@ -19,8 +19,13 @@ class NotificationsController extends AppController{
                 ])
             ->where(['Notifications.id_user_receiver' => $this->request->getAttribute('identity')->id])
             ->order(['Notifications.created' => 'DESC']);
+                    
+        // recuperer tous les follows de l'utilisateur
+        $follows = $this->fetchTable('Follows')->find('all')
+            ->contain(['Users'])
+            ->where(['Follows.id_user' => $this->request->getAttribute('identity')->id]);
 
-        $this->set(compact('notifications'));
+        $this->set(compact('notifications', 'follows'));
     }
 
 }

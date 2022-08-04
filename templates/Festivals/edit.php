@@ -25,8 +25,6 @@
         <?= $this->Form->control('title'); ?>
         <?= $this->Form->control('content', [ 'label' => 'Description']); ?>
         <?= $this->Form->control('place', [ 'label' => 'Lieux']); ?>
-        <?= $this->Form->control('date', [ 'label' => 'Date']); ?>
-        <?= $this->Form->control('program', [ 'label' => 'Programmation']); ?>
         <?= $this->Form->control('link', [ 'label' => 'Lien du site internet officiel']); ?>
         <?= $this->Form->button('Ajouter');?>
     <?= $this->Form->end(); ?>

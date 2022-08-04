@@ -9,12 +9,12 @@
     <?= $this->Form->create(null, ['type' => 'post']) ?>
         <?= $this->Form->control('searchs', ['type' => 'text', 'id' => 'search']) ?>
         <!-- Checkradio entre posts et users -->
-        <?= $this->Form->control('type', ['type' => 'radio', 'options' => ['posts' => 'Posts', 'users' => 'Users'], 'default' => 'posts']) ?>
+        <?= $this->Form->control('type', ['type' => 'radio', 'options' => ['posts' => 'Posts', 'users' => 'Users'], 'default' => 'posts', 'id' => 'type']) ?>
         <?= $this->Form->button('Rechercher') ?>
     <?= $this->Form->end() ?>
         
 </div>
-<div>
+<div id="result">
     <?php if ($type == 'posts') :?>
         <?php foreach ($content as $key => $value) :?>
                 <div>
@@ -30,4 +30,4 @@
         <?php endforeach ;?>      
     <?php endif ;?>
 </div>
-<?= $this->Html->script(['sea.js']) ?>
+<?= $this->Html->script(['seach.js']) ?>

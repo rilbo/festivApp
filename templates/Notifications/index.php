@@ -23,6 +23,31 @@
                     </div>
                 <?php elseif ($notification->type == 1):?>
                     <!-- creer un lien de follow pour suivre la personne -->
+
+                    <?php
+                        // recuperer l'id de l'utilisateur qui a fait l'action
+                        $idUser = $notification->id_user;
+                       
+                        // recuperer l'id de l'utilisateur qui est connecté à la page
+                        $idUserPage = $this->request->getAttribute('identity')->id;
+
+                        $follow = true;
+
+                        foreach ($follows as $f) {
+                            if($f->id_user == $idUserPage && $f->id_user_following == $idUser){
+                                $follow = false;
+            
+                            }
+                           
+                        }
+
+                        echo $follow;
+                    ?>
+                    <?php if ($follow) : ?>
+                        <button class="button follow" type="button" onclick="follow(<?= $idUserPage?>,<?= $idUser?>)">Suivre</button> 
+                    <?php else : ?>
+                        <button class="button unfollow" type="button" onclick="unfollow(<?= $idUserPage?>,<?= $idUser?>)">Ne plus suivre</button>
+                    <?php endif; ?>
                 <?php endif;?>
             </div>
             <div class="notification__date">

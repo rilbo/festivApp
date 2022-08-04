@@ -76,11 +76,14 @@ class PagesController extends AppController
         }
     }
 
-
-
     public function index(){
-        $title = 'Bienvenue';
-        $desc = 'L\'application conçu par un festivalier pour les festivaliers ';
-        $this->set(compact('title', 'desc'));
+        if ($this->request->getAttribute('identity') != null) {
+            return $this->redirect(['controller' => 'Posts', 'action' => 'index']);
+        }else{
+            $title = 'Bienvenue';
+            $desc = 'L\'application conçu par un festivalier pour les festivaliers ';
+            $this->set(compact('title', 'desc'));
+        }
+       
     }
 }

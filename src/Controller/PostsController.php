@@ -28,6 +28,9 @@ class PostsController extends AppController{
         $idTab[] = $id;
         $posts = $posts->where(['posts.id_user IN' => $idTab]);
 
+        
+        
+
         $this->set(compact('posts'));
     } 
 
@@ -101,5 +104,13 @@ class PostsController extends AppController{
         }
 
         $this->set(compact('post', 'festivals'));
+    }
+
+    public function delete($id){
+        $post = $this->Posts->get($id);
+        if ($this->Posts->delete($post)) {
+            $this->Flash->success(__('The {0} post has been deleted.', $post->title));
+            return $this->redirect(['action' => 'index']);
+        }
     }
 }

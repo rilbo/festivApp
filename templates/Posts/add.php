@@ -37,6 +37,7 @@ use phpDocumentor\Reflection\Types\Null_;
 
     <?= $this->Form->radio('id_festival',$dataTab)?> 
     <?= $this->Form->control('titleF', ['label' => false , 'class' => 'input-other']); ?>
+    <?= $this->Form->control('date_festival', ['label' => 'Date de la photo', 'type' => 'date']); ?>
 <?= $this->Form->end(); ?>
 </div>
 <?= $this->Html->script(['preview', 'submit']) ?>

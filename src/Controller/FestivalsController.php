@@ -90,4 +90,9 @@ class FestivalsController extends AppController{
             return $this->redirect(['controller'=>'Posts', 'action' => 'index']);
         }
     }
+
+    public function view($id){
+        $festival = $this->Festivals->get($id);
+        $this->set(compact('festival'));
+    }
 }

@@ -20,6 +20,7 @@
     <?= $this->Form->control('firstname', [ 'label' => 'Prénom']); ?>
     <?= $this->Form->control('lastname', [ 'label' => 'Nom']); ?>
     <?= $this->Form->control('email', [ 'label' => 'Adresse mail']); ?>
+    <span>Lorque vous allez modifier vos données, il faudra se reconnecter pour voir la modification apparaitre</span>
     <?= $this->Form->button('Modifier');?>
 <?= $this->Form->end(); ?>
 

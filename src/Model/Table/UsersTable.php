@@ -17,53 +17,37 @@ class UsersTable extends Table
         // les users peuvent suivre plusieux compte 
         $this->hasMany('Follows', [
             'foreignKey' => 'id_user',
-            'dependent' => true,
-            'cascadeCallbacks' => true,
         ]);
 
         $this->hasMany('Follows', [
             'foreignKey' => 'id_user_following',
-            'dependent' => true,
-            'cascadeCallbacks' => true,
         ]);
 
         $this->hasMany('Festivals', [
             'foreignKey' => 'id_user',
-            'dependent' => true,
-            'cascadeCallbacks' => true,
         ]);
 
         $this->hasMany('Posts', [
             'foreignKey' => 'id_user',
-            'dependent' => true,
-            'cascadeCallbacks' => true,
         ]);
 
         // likes
         $this->hasMany('Likes', [
-            'foreignKey' => 'id_user',
-            'dependent' => true,
-            'cascadeCallbacks' => true,
+            'foreignKey' => 'id_user', 
         ]);
 
         // comments
         $this->hasMany('Comments', [
             'foreignKey' => 'id_user',
-            'dependent' => true,
-            'cascadeCallbacks' => true,
         ]);
 
         // notifications
         $this->hasMany('Notifications', [
             'foreignKey' => 'id_user',
-            'dependent' => true,
-            'cascadeCallbacks' => true,
         ]);
 
         $this->hasMany('Notifications', [
             'foreignKey' => 'id_user_receiver',
-            'dependent' => true,
-            'cascadeCallbacks' => true,
         ]);
         
     }

@@ -4,6 +4,9 @@
     </div>
     <div>
         <?= $this->Html->link($this->Html->image('icons/navbarTop/notif.svg', ['alt' => 'Notification']), ['controller' => 'Notifications', 'action' => 'index'], ['escape' => false]); ?>
+        <!-- Pastille rouge si notification -->
+       
+        <span></span>
     </div>
 </div>
 <div class="feed">
@@ -14,6 +17,12 @@
         if ($posts->count() == 0) : ?>
             <div class="noPost">
                 <p>Vous ne suivez aucune compte !!</p>
+                <!-- modifier son profil pour ajouter une photo ou une description -->
+                <?php var_dump($this->request->getCookie('firstEdit')) ?>
+                <?php if (!($this->request->getCookie('firstEdit')) ) : ?>
+                    <p>Modifier votre profil pour ajouter une photo ou une description</p>
+                    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'edit', $this->request->getAttribute("identity")->id])?>">Modifier votre profil</a>
+                <?php endif; ?>
             </div>
         <?php else : ?>
             <?php foreach ($posts as $post) : ?>
@@ -32,7 +41,9 @@
                     <div>
                         <div>
                             <h2>@<?= $post->user->pseudo ?></h2>
-                            <?= $this->Html->link($post->festival->title, ['controller' => 'Festivals', 'action' => 'index', $post->festival->id], ['escape' => false]); ?>
+                            <?= $this->Html->link($post->festival->title, ['controller' => 'Festivals', 'action' => 'view', $post->festival->id], ['escape' => false]); ?>
+                            <!-- affichage de la date -->
+                            <p><?= $post->date_festival->nice('Europe/Paris', 'fr-FR'); ?></p>
                         </div>
                         <div>
                             <!-- like ou non-->
@@ -54,7 +65,6 @@
                                 }else{
                                     $liked = false;
                                 }
-                                
                             ?>
                             <?php if ($liked) : ?>
                                 <button class="button unlike-<?= $idPost ?>" type="button" onclick="unlike(<?= $id ?>,<?= $idPost?>)"><?= $this->Html->image('icons/post/like-f.svg', ['alt' => 'Like'])?></button>
@@ -67,6 +77,9 @@
                         <p>
                             <?= $post->description ?>
                         </p>
+                        <span>
+                            <?= $post->created->nice('Europe/Paris', 'fr-FR'); ?>
+                        </span>
                     </div>
                     <div>
                         <div>

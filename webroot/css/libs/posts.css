@@ -1,7 +1,7 @@
 .feed .post:first-child {
   margin-top: 100px;
 }
-.feed .post div:first-child img {
+.feed .post div img {
   width: 100px;
 }
 

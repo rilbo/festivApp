@@ -7,7 +7,7 @@
         <h2>@<?= $user->pseudo ?></h2>
     </div>
     <div>
-        <?= $this->Html->link($this->Html->image('icons/navbarTop/logout.svg', ['alt' => 'Notification']), ['controller' => 'Notifications', 'action' => 'index'], ['escape' => false]); ?>
+        <?= $this->Html->link($this->Html->image('icons/navbarTop/logout.svg', ['alt' => 'Notification']), ['controller' => 'Users', 'action' => 'logout'], ['escape' => false]); ?>
     </div>
 </div>
 <div>
@@ -89,7 +89,7 @@
                 $img = $img[0];
                 $imgPicturesUrl = $this->Html->Url->Build('/img/pictures/posts/'.$img.'');    
             ?>
-            <?= $this->Html->link("<div class='post-user' style='background-image: url(".$imgPicturesUrl.");'></div>", ['controller' => 'Posts', 'action' => 'view', $post->id], ['escape' => false])?>
+            <?= $this->Html->link("<div class='post-user' style='background-image: url(".$imgPicturesUrl.");'></div>", ['controller' => 'Users', 'action' => 'posts', '#' => $post->id], ['escape' => false])?>
             <p><?= $post->pictures ?></p>
             
         <?php endforeach; ?>

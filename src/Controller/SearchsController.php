@@ -39,6 +39,8 @@ class SearchsController extends AppController{
             
         }
 
+    
+
         $this->set(compact('content', 'type'));
     }
 }
