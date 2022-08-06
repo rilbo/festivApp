@@ -113,4 +113,11 @@ class PostsController extends AppController{
             return $this->redirect(['action' => 'index']);
         }
     }
+
+    public function view($id){
+        $post = $this->Posts->get($id, [
+            'contain' => ['Users', 'Festivals', 'Likes']
+        ]);
+        $this->set(compact('post'));
+    }
 }

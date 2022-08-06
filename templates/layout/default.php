@@ -33,7 +33,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <?= $this->Html->link($this->Html->image('icons/header/home.svg', ['alt' => 'accueil']), ['controller' => 'Posts', 'action' => 'index'], ['escape' => false]); ?>
                 </li>
                 <li>
-                    <?= $this->Html->link($this->Html->image('icons/header/search.svg', ['alt' => 'recherche']), ['controller' => 'Searchs', 'action' => 'index', 'all', 'posts'], ['escape' => false]); ?>
+                    <?= $this->Html->link($this->Html->image('icons/header/search.svg', ['alt' => 'recherche']), ['controller' => 'Searchs', 'action' => 'index'], ['escape' => false]); ?>
                 </li>
                 <li>
                     <?= $this->Html->link('<div class="profil-navbar" style="background-image:url('.$imgProfils.');"></div>', ['controller' => 'Users', 'action' => 'view', $this->request->getAttribute('identity')->id], ['escape' => false]); ?>

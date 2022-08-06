@@ -5,29 +5,18 @@
     </div>
 </div>
 <div>
-    <!-- search fields -->
-    <?= $this->Form->create(null, ['type' => 'post']) ?>
-        <?= $this->Form->control('searchs', ['type' => 'text', 'id' => 'search']) ?>
-        <!-- Checkradio entre posts et users -->
-        <?= $this->Form->control('type', ['type' => 'radio', 'options' => ['posts' => 'Posts', 'users' => 'Users'], 'default' => 'posts', 'id' => 'type']) ?>
-        <?= $this->Form->button('Rechercher') ?>
-    <?= $this->Form->end() ?>
-        
+    <?= $this->Form->control('search', ['id'=>'input-search']); ?>
+    <?= $this->Form->control('type', ['type' => 'radio', 'options' => ['posts' => 'Posts', 'users' => 'Users'], 'default' => 'posts']); ?>
 </div>
-<div id="result">
-    <?php if ($type == 'posts') :?>
-        <?php foreach ($content as $key => $value) :?>
-                <div>
-                    <h2><?= $value->pictures ?></h2>
-                </div>
-        <?php endforeach ;?>
-    <?php endif ;?>
-    <?php if ($type == 'users') :?>
-        <?php foreach ($content as $key => $value) :?>
-                <div>
-                    <h2><?= $value->pseudo ?></h2>
-                </div>
-        <?php endforeach ;?>      
-    <?php endif ;?>
+<div id="results-search">
+    <?php foreach ($posts as $post) { ?>
+        <?php
+            $img = $post->pictures;
+            $img = explode(',', $img);
+            $img = $img[0];
+        ?>
+        <?= $this->html->link('<div class="post-card-img"><img src="img/pictures/posts/'.$img.'" alt=""></div>',['controller' => 'Posts', 'action' => 'view', $post->id], ['escape' => false]);?>
+    <?php } ?>
 </div>
-<?= $this->Html->script(['seach.js']) ?>
+
+<?= $this->Html->script(['search.js']) ?>
