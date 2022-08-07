@@ -17,7 +17,7 @@
   margin-top: 80px;
 }
 .container .back .prez {
-  margin: 70px 0px;
+  margin: 180px 0px;
 }
 .container .back .prez p {
   font-weight: 600;
@@ -34,6 +34,9 @@
 }
 .container .back .connect .btn:first-child {
   margin-bottom: 20px;
+}
+.container .back .connect .btn {
+  width: calc(90% - 40px);
 }
 .container #login_signin {
   height: 100vh;

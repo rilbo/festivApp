@@ -17,7 +17,7 @@
             margin-top: 80px;
         }
         .prez{
-            margin: 70px 0px;
+            margin: 180px 0px;
             p{
                 font-weight: 600;
                 line-height: 1.5;
@@ -33,6 +33,9 @@
             width: 100%;
             .btn:first-child{
                 margin-bottom: 20px;
+            }
+            .btn{
+                width: calc(90% - 40px);
             }
         }
     }
@@ -100,7 +103,5 @@
 
             }
         }
-    }
-
-    
+    } 
 }

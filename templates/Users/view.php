@@ -10,7 +10,7 @@
         <?= $this->Html->link($this->Html->image('icons/navbarTop/logout.svg', ['alt' => 'Notification']), ['controller' => 'Users', 'action' => 'logout'], ['escape' => false]); ?>
     </div>
 </div>
-<div>
+<div id="user-view">
     <div>
         <!-- profil img -->
         <div>
@@ -58,23 +58,24 @@
         }
         ?>
         <p><?= $desc ?></p>
-        <?php if ($id == $idUserPage) :?>
-            <?= $this->Html->link('Modifier',['controller' => 'Users', 'action' => 'edit',  $this->request->getAttribute('identity')->id, '_full' => true,]);?>
-            <!-- si il est admin  -->
-            <?php if ($this->request->getAttribute('identity')->admin == 1) :?>
-                <?= $this->Html->link('Dashboard', ['controller' => 'Users', 'action' => 'dashboard', '_full' => true,]);?>
-            <?php endif; ?>
-        <?php else : ?>
-            <?php if ($follow == null) : ?>
-                <button class="button follow" type="button" onclick="follow(<?= $id?>,<?= $idUserPage?>)">Suivre</button> 
+        <div>
+            <?php if ($id == $idUserPage) :?>
+                <?= $this->Html->link('Modifier',['controller' => 'Users', 'action' => 'edit',  $this->request->getAttribute('identity')->id, '_full' => true,], ['class' => 'btn']);?>
+                <!-- si il est admin  -->
+                <?php if ($this->request->getAttribute('identity')->admin == 1) :?>
+                    <?= $this->Html->link('Dashboard', ['controller' => 'Users', 'action' => 'dashboard', '_full' => true,], ['class' => 'btn']);?>
+                <?php endif; ?>
             <?php else : ?>
-                <button class="button unfollow" type="button" onclick="unfollow(<?= $id?>,<?= $idUserPage?>)">Ne plus suivre</button>
-            <?php endif; ?>
-        <?php endif ; ?>
-        
+                <?php if ($follow == null) : ?>
+                    <button class="btn follow" type="button" onclick="follow(<?= $id?>,<?= $idUserPage?>)">Suivre</button> 
+                <?php else : ?>
+                    <button class="btn unfollow" type="button" onclick="unfollow(<?= $id?>,<?= $idUserPage?>)">Ne plus suivre</button>
+                <?php endif; ?>
+            <?php endif ; ?>
+        </div>    
     </div>
 </div>
-<div class="posts-users">
+<div id="user-posts">
     <!-- les posts de l'utilisateurs -->
     <?php if($posts->count() == 0) :?>
         <div class="no-publication">
@@ -90,7 +91,6 @@
                 $imgPicturesUrl = $this->Html->Url->Build('/img/pictures/posts/'.$img.'');    
             ?>
             <?= $this->Html->link("<div class='post-user' style='background-image: url(".$imgPicturesUrl.");'></div>", ['controller' => 'Users', 'action' => 'posts', '#' => $post->id], ['escape' => false])?>
-            <p><?= $post->pictures ?></p>
             
         <?php endforeach; ?>
     <?php endif ; ?>

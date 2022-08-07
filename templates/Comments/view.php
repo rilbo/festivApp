@@ -8,39 +8,42 @@
     </div>
 </div>
 <div class="comments">
-
-<?php foreach ( $comments as $comment ) :?>
-    <?php 
-        $imgProfilUsers = $this->Html->Url->Build('/img/pictures/profils/'.$comment->user->picture);   
-    ?>
-    <div>
-        <div>
-            <div>
+    <?php if($comments->count() == 0): ?>
+        <div class="no-comments">
+            <p>Il y a aucun commentaire</p>
+        </div>
+    <?php else: ?>
+        <?php foreach ( $comments as $comment ) :?>
+            <?php 
+                $imgProfilUsers = $this->Html->Url->Build('/img/pictures/profils/'.$comment->user->picture);   
+            ?>
+            <div class="comment">
                 <div>
-                    <!-- image de profil de l'utilisateurs -->
-                    <?= $this->Html->image($imgProfilUsers, ['alt' => 'photo de profil de '.$comment->user->pseudo.'']); ?>
+                    <div>
+                        <div class="photo" style="background-image:url(<?= $imgProfilUsers ?>);">
+                        </div>
+                        <div>
+                            <h2>@<?= $comment->user->pseudo ?></h2>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- time -->
+                        <p><?= $comment->created->i18nFormat('dd/MM/yyyy HH:mm:ss') ?></p>
+                    </div>
                 </div>
                 <div>
-                    <h2>@<?= $comment->user->pseudo ?></h2>
+                    <!-- content -->
+                    <p><?= $comment->content ?></p>
                 </div>
             </div>
-            <div>
-                <!-- time -->
-                <p><?= $comment->created->i18nFormat('dd/MM/yyyy HH:mm:ss') ?></p>
-            </div>
-        </div>
-        <div>
-            <!-- content -->
-            <p><?= $comment->content ?></p>
-        </div>
-    </div>
-
-<?php endforeach ;?>
+        <?php endforeach ;?>
+    <?php endif; ?>
 </div>
 <div class="add-comments">
     <?php
         $imgProfils = $this->Html->Url->Build('/img/pictures/profils/'.$this->request->getAttribute("identity")->picture);
     ?>
-    <?= $this->Html->image($imgProfils, ['alt' => 'Photo profil pour les commentaires']); ?>
-    <?= $this->Html->link('<input type="text" placeholder="Votre commentaires">', ['controller' => 'Comments', 'action' => 'add', $idPost], ['escape' => false]); ?>
+    <div class="photo" style="background-image:url(<?= $imgProfils ?>);">
+    </div>
+    <?= $this->Html->link('<input type="text" placeholder="Laisser un commentaire">', ['controller' => 'Comments', 'action' => 'add', $idPost], ['escape' => false]); ?>
 </div>

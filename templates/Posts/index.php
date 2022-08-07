@@ -15,10 +15,9 @@
     <?php 
 
         if ($posts->count() == 0) : ?>
-            <div class="noPost">
+            <div class="no-post">
                 <p>Vous ne suivez aucune compte !!</p>
                 <!-- modifier son profil pour ajouter une photo ou une description -->
-                <?php var_dump($this->request->getCookie('firstEdit')) ?>
                 <?php if (!($this->request->getCookie('firstEdit')) ) : ?>
                     <p>Modifier votre profil pour ajouter une photo ou une description</p>
                     <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'edit', $this->request->getAttribute("identity")->id])?>">Modifier votre profil</a>
@@ -41,9 +40,9 @@
                     <div>
                         <div>
                             <h2>@<?= $post->user->pseudo ?></h2>
-                            <?= $this->Html->link($post->festival->title, ['controller' => 'Festivals', 'action' => 'view', $post->festival->id], ['escape' => false]); ?>
+                            <?= $this->Html->link($post->festival->title." ".$post->date_festival->nice('Europe/Paris', 'fr-FR'), ['controller' => 'Festivals', 'action' => 'view', $post->festival->id], ['escape' => false]); ?>
                             <!-- affichage de la date -->
-                            <p><?= $post->date_festival->nice('Europe/Paris', 'fr-FR'); ?></p>
+                            
                         </div>
                         <div>
                             <!-- like ou non-->
@@ -83,14 +82,13 @@
                     </div>
                     <div>
                         <div>
-                            <div>
-                                <?= $this->Html->link("Voir les commentaires", ['controller' => 'Comments', 'action' => 'view', $post->id], ['escape' => false]); ?>
-                            </div>
-                            <div>
-                                <?= $this->Html->image($imgProfils, ['alt' => 'Photo profil pour les commentaires']); ?>
-                                <?= $this->Html->link('<input type="text" placeholder="Votre commentaires">', ['controller' => 'Comments', 'action' => 'add', $post->id], ['escape' => false]); ?>
-                            </div>
+                            <?= $this->Html->link("Voir les commentaires", ['controller' => 'Comments', 'action' => 'view', $post->id], ['escape' => false]); ?>
                         </div>
+                        <div>
+                            <div class="photo" style="background-image:url(<?= $imgProfils ?>);"></div>
+                            <?= $this->Html->link('<input type="text" placeholder="Votre commentaires">', ['controller' => 'Comments', 'action' => 'add', $post->id], ['escape' => false]); ?>
+                        </div>
+                       
                     </div>
                 </div>
             <?php endforeach ; ?>

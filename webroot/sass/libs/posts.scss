@@ -2,15 +2,158 @@
 
 }
 
+.feed, .comments, .add-comments{
+    div.photo{
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
 .feed{
+    min-height: calc(100vh);
+    padding: 0px 50px 0px 50px;
+    .no-post{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 200px;
+
+    }
     .post:first-child{
         margin-top: 100px;
     }
     .post{
-        div{
+        background-color: #fff;
+        margin-bottom: 30px;
+
+        &> div:not(&>div:nth-child(1)){
+            padding: 10px;
+        }
+        > div:nth-child(1){
             img{
-                width: 100px;
+                width: 100%;
+                border-radius:30px 30px 0px 0px;
             }
+        }
+        > div:nth-child(2){
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button{
+                border: none;
+                background-color: transparent;
+                img{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+        > div:nth-child(3){
+            span{
+                font-size: 12px;
+                color: #c9c9c9;
+            }
+        }
+        > div:last-child{
+            div:last-child{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+               
+                a{
+                    width: 100%;
+                    input{
+                        width: calc(100% - 30px);
+                        border: none;
+                        border:1px solid #E0E0E0;
+                        background-color: #fff;
+                        border-radius: 50px;
+                        padding: 10px;
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+#comments-add{
+    textarea{
+        width: calc(100% - 20px);
+        border:none;
+        padding: 10px;
+    }
+    .btn{
+        margin-top: 20px;
+    }
+}
+
+#header-custom.header-comments{
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.comments{
+    min-height: calc(100vh - 70px);
+    padding: 0px 30px;
+    >div.no-comments{
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 200px;
+        p{
+            text-align: center;
+        }
+    }
+    >div.comment{
+        width: 100%;
+        > div:first-child{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            > div:first-child{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            > div:last-child{
+                p{
+                    font-size: 12px;
+                    color: #c9c9c9;
+                }
+            }
+        }
+        > div:last-child{
+            margin-top: 20px;
+        }
+    }
+}
+
+.add-comments{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    max-width: 580px;
+    bottom: 20px;
+background-color: #fff;
+    a{
+        width: 100%;
+        input{
+            width: calc(100% - 20px);
+            border: none;
+            border:1px solid #E0E0E0;
+            background-color: #fff;
+            border-radius: 50px;
+            padding: 10px;
         }
     }
 }

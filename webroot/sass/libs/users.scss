@@ -1,0 +1,62 @@
+.container{
+    #user-view{
+        padding: 0px 30px 0px 30px;
+        > div:first-child{
+            display: flex;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+            justify-content: space-between;
+        }
+        > div:last-child{
+            margin-top: 20px;
+            > div{
+                display: flex;
+                gap: 10px;
+                margin-top: 20px;
+            }
+            p{
+                margin-top: 10px;
+            }
+        }
+    }
+    #user-posts{
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        min-height: calc(100vh - (290px + 100px));
+        a{
+            width: calc(100% / 3);
+            height: 193px;
+            div{
+                width: 100%;
+                height: 100%;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+           
+        }
+        a:first-child{
+            div{
+                border-radius: 20px 0px 0px 0px;
+            }
+        }
+        a:nth-child(3){
+            div{
+                border-radius: 0px 20px 0px 0px;
+            }
+        }
+        div.no-publication{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 200px;
+            p{
+                text-align: center;
+            } 
+        }
+    }
+}
