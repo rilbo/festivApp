@@ -1,0 +1,23 @@
+#header-custom.header-festival-view {
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+#content-custom {
+  padding: 0px 30px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#content-festival, #link-festival {
+  padding: 0px 30px;
+}
+
+#content-festival {
+  margin: 20px 0px;
+}
+#content-festival p {
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=festival.css.map */
