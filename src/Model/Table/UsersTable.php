@@ -42,13 +42,9 @@ class UsersTable extends Table
         ]);
 
         // notifications
-        $this->hasMany('Notifications', [
-            'foreignKey' => 'id_user',
+        $this->hasMany('Notifications')->setForeignKey([
+            'user_id',
+            'id_user_receiver'
         ]);
-
-        $this->hasMany('Notifications', [
-            'foreignKey' => 'id_user_receiver',
-        ]);
-        
     }
 }

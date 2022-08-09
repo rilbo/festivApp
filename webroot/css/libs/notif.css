@@ -1,0 +1,29 @@
+#notifs {
+  padding: 0px 30px;
+}
+#notifs > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  margin-bottom: 10px;
+}
+#notifs > div > div.content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#notifs > div > div.content p {
+  margin: 0px;
+  font-size: 14px;
+}
+#notifs > div > div.content span {
+  font-size: 12px;
+  color: #999;
+}
+#notifs > div img {
+  width: 50px;
+  max-height: 70px;
+}
+
+/*# sourceMappingURL=notif.css.map */

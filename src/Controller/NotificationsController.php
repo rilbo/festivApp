@@ -11,7 +11,7 @@ class NotificationsController extends AppController{
     public function index(){
         // recuperer toute les notifications de l'utilisateur
         $notifications = $this->Notifications->find('all')
-            ->contain(['Users', 'Posts'],
+            ->contain(['Users', 'Users', 'Posts'],
                 [
                     'conditions' => [
                         'Notifications.id_post IS' => null,

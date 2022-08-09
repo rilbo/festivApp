@@ -13,24 +13,15 @@ class NotificationsTable extends Table
 
         // pour created & modifief
         $this->addBehavior('Timestamp');
-        
-
-        $this->belongsTo('Users', [
-            'foreignKey' => 'id_user',
-            'joinType' => 'INNER',
-        ]);
 
         $this->belongsTo('Posts', [
             'foreignKey' => 'id_post',
             'joinType' => 'LEFT',
         ]);
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'id_user_receiver',
-            'joinType' => 'INNER',
-        ]);
-
-
-        
+        // plusieurs cle etrangere dans la meme table
+        $this->belongsTo('Users')
+            ->setForeignKey('id_user', 'id_user_receiver')
+            ->setJoinType('INNER');
     }
 }
