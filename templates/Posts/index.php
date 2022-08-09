@@ -5,7 +5,6 @@
     <div>
         <?= $this->Html->link($this->Html->image('icons/navbarTop/notif.svg', ['alt' => 'Notification']), ['controller' => 'Notifications', 'action' => 'index'], ['escape' => false]); ?>
         <!-- Pastille rouge si notification -->
-       
         <span></span>
     </div>
 </div>

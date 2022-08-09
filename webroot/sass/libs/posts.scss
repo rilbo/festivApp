@@ -2,10 +2,10 @@
 
 }
 
-.feed, .comments, .add-comments{
+.feed, .comments, .add-comments, #notifs, #user-posts-view{
     div.photo{
-        width: 50px;
-        height: 50px;
+        width: 39px;
+        height: 39px;
         border-radius: 25px;
         background-position: center;
         background-repeat: no-repeat;
@@ -16,6 +16,7 @@
 .feed{
     min-height: calc(100vh);
     padding: 0px 50px 0px 50px;
+    margin-bottom: 130px;
     .no-post{
         width: 100%;
         height: 100vh;
@@ -31,6 +32,8 @@
     .post{
         background-color: #fff;
         margin-bottom: 30px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        border-radius: 30px;
 
         &> div:not(&>div:nth-child(1)){
             padding: 10px;
@@ -81,6 +84,15 @@
             }
         }
     }
+    @media screen and (max-width: 580px){
+        padding: 0px 20px 0px 20px;
+    }
+}
+
+.feed.posts-user{
+    .post:first-child{
+        margin-top: 0px;
+    }
 }
 
 #comments-add{
@@ -91,6 +103,10 @@
     }
     .btn{
         margin-top: 20px;
+    }
+    
+    @media screen and (max-width: 580px){
+        padding: 0px 20px;
     }
 }
 
@@ -103,13 +119,13 @@
     min-height: calc(100vh - 70px);
     padding: 0px 30px;
     >div.no-comments{
-        height: 100vh;
+        height: calc(100vh - 70px);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 200px;
+      
         p{
-            text-align: center;
+            margin-bottom: 200px;
         }
     }
     >div.comment{
@@ -144,7 +160,7 @@
     gap: 10px;
     max-width: 580px;
     bottom: 20px;
-background-color: #fff;
+    background-color: #fff;
     a{
         width: 100%;
         input{
@@ -154,6 +170,16 @@ background-color: #fff;
             background-color: #fff;
             border-radius: 50px;
             padding: 10px;
+        }
+    }
+    @media screen and (max-width: 580px){
+        padding: 0px 20px;
+        a{
+            
+            input{
+                width: calc(100% - 60px);
+              
+            }
         }
     }
 }

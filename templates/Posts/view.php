@@ -1,7 +1,6 @@
 <div id="header-custom">
     <div>
-        <!-- go bakc -->
-        <?= $this->Html->link($this->Html->image('icons/header/back.svg', ['alt' => 'retour']), ['controller' => 'Searchs', 'action' => 'index'], ['escape' => false]); ?>
+        <?= $this->Html->link($this->Html->image('icons/navbarTop/back.svg', ['alt' => 'retour']), ['controller' => 'Searchs', 'action' => 'index'], ['escape' => false]); ?>
     </div>
 </div>
 <?php
@@ -9,7 +8,7 @@
     $images = explode(',', $images);
     $imgProfils = $this->Html->Url->Build('/img/pictures/profils/'.$this->request->getAttribute("identity")->picture);
 ?>
-<div class="post">
+<div class="post" id="user-posts-view">
     <div>
         <?php foreach($images as $image) : ?>
             <?= $this->Html->image('pictures/posts/'.$image.'', ['alt' => 'photo des posts pour'.$post->user->pseudo.' au festival '.$post->festival->title.'']); ?>
@@ -18,9 +17,9 @@
     <div>
         <div>
             <h2>@<?= $post->user->pseudo ?></h2>
-            <?= $this->Html->link($post->festival->title, ['controller' => 'Festivals', 'action' => 'view', $post->festival->id], ['escape' => false]); ?>
+            <?= $this->Html->link($post->festival->title." ".$post->date_festival->nice('Europe/Paris', 'fr-FR'), ['controller' => 'Festivals', 'action' => 'view', $post->festival->id], ['escape' => false]); ?>
             <!-- affichage de la date -->
-            <p><?= $post->date_festival->nice('Europe/Paris', 'fr-FR'); ?></p>
+            
         </div>
         <div>
             <!-- like ou non-->
@@ -64,7 +63,8 @@
                 <?= $this->Html->link("Voir les commentaires", ['controller' => 'Comments', 'action' => 'view', $post->id], ['escape' => false]); ?>
             </div>
             <div>
-                <?= $this->Html->image($imgProfils, ['alt' => 'Photo profil pour les commentaires']); ?>
+                <div class="photo" style="background-image:url(<?= $imgProfils ?>);">
+                </div>
                 <?= $this->Html->link('<input type="text" placeholder="Votre commentaires">', ['controller' => 'Comments', 'action' => 'add', $post->id], ['escape' => false]); ?>
             </div>
         </div>
