@@ -19,6 +19,13 @@
                 margin-top: 10px;
             }
         }
+        @media screen and (max-width: 580px){
+            > div:first-child{
+               h4{
+                font-size: 12px;
+               }
+            }
+        }
     }
     #user-posts{
         margin-top: 30px;
@@ -58,5 +65,76 @@
                 text-align: center;
             } 
         }
+        @media screen and (max-width: 580px){
+            min-height: auto;
+            a{
+                height: 150px;
+            }
+        }
+    }
+    #user-posts-view{
+        margin-bottom: 130px;
+        > div:first-child{
+           img{
+            width: 100%;
+            height: auto;
+           }
+        }
+        > div:not(div:first-child){
+            padding: 0px 20px;
+        }
+        > div:nth-child(2){
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button{
+                border: none;
+                background-color: transparent;
+                img{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+        >div:nth-child(3){
+            margin: 20px 0px;
+            span{
+                font-size: 12px;
+                color: #c9c9c9;
+            }
+        }
+        >div:last-child{
+            div:last-child{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                a{
+                    width: 100%;
+                    input{
+                        width: calc(100% - 30px);
+                        border: none;
+                        border:1px solid #E0E0E0;
+                        background-color: #fff;
+                        border-radius: 50px;
+                        padding: 10px;
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+.preview{
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    background-color: #f2f2f2;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @media screen and (max-width: 580px){
+        height: 80px;
+        width: 80px;
     }
 }

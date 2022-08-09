@@ -69,7 +69,7 @@
                 <?php if ($follow == null) : ?>
                     <button class="btn follow" type="button" onclick="follow(<?= $id?>,<?= $idUserPage?>)">Suivre</button> 
                 <?php else : ?>
-                    <button class="btn unfollow" type="button" onclick="unfollow(<?= $id?>,<?= $idUserPage?>)">Ne plus suivre</button>
+                    <button class="btn unfollow" type="button" onclick="unfollow(<?= $id?>,<?= $idUserPage?>)">Abonné</button>
                 <?php endif; ?>
             <?php endif ; ?>
         </div>    
