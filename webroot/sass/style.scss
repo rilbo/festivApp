@@ -3,6 +3,11 @@
 @import "libs/index.scss";
 @import "libs/posts.scss";
 @import "libs/users.scss";
+@import "libs/searchs.scss";
+@import "libs/dashboard.scss";
+@import "libs/addedit.scss";
+@import "libs/notif.scss";
+@import "libs/festival.scss";
 
 .message{
     position: absolute;
@@ -13,15 +18,6 @@
     background-color: #f2f2f2;
 }
 
-.preview{
-    height: 150px;
-    width: 150px;
-    border-radius: 100px;
-    background-color: #f2f2f2;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 
 .input-other{
     display: none;

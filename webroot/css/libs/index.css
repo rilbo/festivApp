@@ -26,6 +26,11 @@
   margin: 0 auto;
   margin-top: 1rem;
 }
+@media screen and (max-width: 580px) {
+  .container .back .prez {
+    margin: 140px 0px;
+  }
+}
 .container .back .connect {
   display: flex;
   flex-direction: column;
@@ -56,14 +61,21 @@
   text-align: center;
   margin-bottom: 20px;
 }
-.container #login_signin div {
+.container #login_signin > div {
+  padding: 0px 20px;
   width: 100%;
+}
+@media screen and (max-width: 580px) {
+  .container #login_signin > div {
+    width: 90%;
+  }
 }
 .container .copyright {
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
 }
 .container .copyright p {
   color: rgba(166, 166, 166, 0.5);
