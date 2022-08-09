@@ -1,0 +1,37 @@
+#stats{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0px 30px;
+    > div{
+        width: calc(100% / 2);
+        border-radius: 30px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+}
+
+#add-festival{
+    margin: 20px 0px;
+    padding: 0px 30px;
+}
+
+#requests{
+    background-color: #fff;
+    padding: 0px 30px;
+    
+    > div{
+        background-color: rgb(224, 224, 224);
+        padding: 20px;
+        margin-bottom: 10px;
+        border-radius: 30px;
+    }
+
+    h2{
+        margin-bottom: 10px;
+    }
+}

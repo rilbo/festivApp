@@ -7,7 +7,7 @@
     <?= $this->Html->link('Quitter', ['controller' => 'Users', 'action' => 'view', $user->id]); ?>
     </div>
 </div>
-<div>
+<div id="stats">
     <!-- Nombre de publication totals -->
     <div>
         <h3><?= $postsCount ?></h3>
@@ -20,11 +20,12 @@
     </div>
 </div>
 <!-- Ajouter un festivals -->
-<div>
-    <?= $this->Html->link('Ajouter un festival', ['controller' => 'Festivals', 'action' => 'add', '_full' => true,]);?>
+<div id="add-festival">
+    <?= $this->Html->link('Ajouter un festival', ['controller' => 'Festivals', 'action' => 'add', '_full' => true,], ['class' => "btn"]);?>
 </div>
 <!-- request utilisateur qui veulent qu'on ajoute des festivals non existant -->
-<div>
+<div id="requests">
+    <h2>Requêtes utilisateurs</h2>
     <?php foreach($requests as $request) : ?>
         <div class="request">
             <div>
@@ -32,7 +33,6 @@
             </div>
             <div>
                 <?= $this->Html->link('Ajouter', ['controller' => 'Festivals', 'action' => 'edit', $request->id_festival], ['escape' => false]); ?>
-                
             </div>
         </div>
     <?php endforeach; ?>
