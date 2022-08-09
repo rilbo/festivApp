@@ -16,3 +16,12 @@ if(submitFestiv != null) {
     });
 }
 
+let submitUser = document.querySelector("#submit-user");
+if(submitUser != null) {
+    submitUser.addEventListener("click", function() {
+        let form = document.querySelector(".edit-user");
+        form.submit();
+    });
+}
+
+

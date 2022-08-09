@@ -22,7 +22,7 @@ async function follow(id, idFollow){
         if(data.success) {
             console.log(data);
             let button = document.querySelector(".follow");
-            button.innerHTML = 'Ne plus suivre';
+            button.innerHTML = 'Abonné';
             button.classList.add('unfollow');
             button.classList.remove('follow');
             // attribut onclick sur le bouton

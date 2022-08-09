@@ -47,8 +47,7 @@ async function search(value, type){
                     html += `
                     
                     <a href="/users/view/${element.id}"  class="user-card">
-                        <div class="user-card-img">
-                            <img src="img/pictures/profils/${element.picture}" alt="">
+                        <div class="user-card-img" style="background-image:url('img/pictures/profils/${element.picture}');">
                         </div>
                         <div class="user-card-info">
                             <h3>@${element.pseudo}</h3>
@@ -58,25 +57,25 @@ async function search(value, type){
                         `;
                 });
                 document.querySelector('#results-search').innerHTML = html;
+                document.querySelector('#results-search').style.padding= '0px 20px';
             } else if (type == 'posts') {
                 let html = '';
-                result.forEach(element => {
-                    console.log(element);
+                result.forEach(element => { 
                     let img = element.pictures;
                     // transforme le string en array
                     img = img.split(',');
                     img = img[0];
                     
                     html += `
-                    <a href="/posts/view/${element.id}" class="post-card">
-                        <div class="post-card-img">
-                            <img src="img/pictures/posts/${img}" alt="">
+                    <a href="/posts/view/${element.id}">
+                        <div class="post-card-img" style="background-image:url('img/pictures/posts/${img}');">
                         </div>
                     </a>
                     
                     `;
                 });
                 document.querySelector('#results-search').innerHTML = html;
+                document.querySelector('#results-search').style.padding= '0px';
             }
         }
 
