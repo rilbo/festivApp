@@ -4,9 +4,14 @@
         <h2>Recherche</h2>
     </div>
 </div>
-<div>
-    <?= $this->Form->control('search', ['id'=>'input-search']); ?>
-    <?= $this->Form->control('type', ['type' => 'radio', 'options' => ['posts' => 'Posts', 'users' => 'Users'], 'default' => 'posts']); ?>
+<div id="form-search">
+    <?php
+        $options = array();
+        $options['posts'] = $this->Html->image('icons/search/festival.svg', ['alt' => 'festival']);
+        $options['users'] = $this->Html->image('icons/search/people.svg', ['alt' => 'profil']);
+    ?>
+    <?= $this->Form->control('search', ['id'=>'input-search', 'label' => false, 'placeholder' => "Recherche..."]); ?>
+    <?= $this->Form->control('type', ['type' => 'radio', 'options' => $options, 'default' => 'posts', 'label' => false, 'escape' => false]); ?>
 </div>
 <div id="results-search">
     <?php foreach ($posts as $post) { ?>
@@ -15,7 +20,7 @@
             $img = explode(',', $img);
             $img = $img[0];
         ?>
-        <?= $this->html->link('<div class="post-card-img"><img src="img/pictures/posts/'.$img.'" alt=""></div>',['controller' => 'Posts', 'action' => 'view', $post->id], ['escape' => false]);?>
+        <?= $this->html->link('<div class="post-card-img" style="background-image:url(img/pictures/posts/'.$img.');"></div>',['controller' => 'Posts', 'action' => 'view', $post->id], ['escape' => false]);?>
     <?php } ?>
 </div>
 
