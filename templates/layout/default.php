@@ -1,5 +1,5 @@
 <?php
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = "Festiv'app";
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-
     <?= $this->Html->css(['style']) ?>
    
     <?= $this->Html->meta('csrfToken', $this->request->getAttribute('csrfToken')); ?>
@@ -20,6 +19,26 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function() {
+                navigator.serviceWorker
+                .register("/sw.js")
+                .then(res => console.log("service worker registered"))
+                .catch(err => console.log("service worker not registered", err))
+            })
+        }
+        console.log(navigator)
+    </script>
+
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="manifest" href="favicon/manifest.json">
 </head>
 <body>
     <?php if ($this->request->getAttribute('identity') != null) :?>
