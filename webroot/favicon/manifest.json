@@ -12,6 +12,6 @@
     "background_color": "#ffffff",
     "display": "standalone",
     "lang": "fr-FR",
-    "start_url": "http://localhost:8765/",
-    "scope": "http://localhost:8765/"
+    "start_url": "https://festivapp.valentin-muller.fr/",
+    "scope": "https://festivapp.valentin-muller.fr/"
 }
