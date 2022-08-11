@@ -1,10 +1,6 @@
-.container{
-
-}
-
 .feed, .comments, .add-comments, #notifs, #user-posts-view{
     div.photo{
-        width: 39px;
+        width: 47px;
         height: 39px;
         border-radius: 25px;
         background-position: center;
@@ -56,19 +52,35 @@
                     height: 20px;
                 }
             }
+            a{
+                font-weight: 200;
+                color: #2e2e2e;
+            }
         }
         > div:nth-child(3){
+            p{
+                font-weight: 200;
+                color: #2e2e2e; 
+            }
             span{
                 font-size: 12px;
                 color: #c9c9c9;
             }
         }
         > div:last-child{
+            > div:first-child{
+                margin-bottom: 10px;
+                a{
+                    font-weight: 600;
+                    font-size: 14px;
+                    
+                }
+            }
             div:last-child{
                 display: flex;
                 align-items: center;
                 gap: 10px;
-               
+                
                 a{
                     width: 100%;
                     input{
