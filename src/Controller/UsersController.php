@@ -123,8 +123,10 @@ class UsersController extends AppController{
                     $cookie = new Cookie('firstEdit', "edit", $date, '/', null, false, false);
 
                     $this->response = $this->response->withCookie($cookie);
+                    // update pictures dans identity 
+                    $this->Authentication->setIdentity($user)->picture = $name;
                     $this->Flash->success('Your account has modified');
-                    return $this->redirect(['controller' => 'Users', 'action' => 'logout', $user->id]);
+                    return $this->redirect(['controller' => 'Users', 'action' => 'view', $user->id]);
                 }
                 $this->Flash->error('An error occured');
                
@@ -148,7 +150,7 @@ class UsersController extends AppController{
             ]);
 
             // touts les requetes en fonction de si finish est true ou false
-            $requests = $this->fetchTable('requests')->find()->where(['finish' => 0])->orderDesc('created')->all();
+            $requests = $this->fetchTable('Requests')->find()->where(['finish' => 0])->orderDesc('created')->all();
             
             // nombre de publications totales
             $postsCount = $this->Users->Posts->find('all')->count();
