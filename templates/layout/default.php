@@ -28,13 +28,17 @@ $cakeDescription = "Festiv'app";
                 .catch(err => console.log("service worker not registered", err))
             })
         }
-        console.log(navigator)
     </script>
-
-    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <?php
+        $apple = $this->Html->Url->Build('favicon/apple-touch-icon.png');
+        $icon32 = $this->Html->Url->Build('favicon/favicon-32x32.png');
+        $icon16 = $this->Html->Url->Build('favicon/favicon-16x16.png');
+        $maskIcon = $this->Html->Url->Build('favicon/safari-pinned-tab.svg');
+    ?>
+    <link rel="apple-touch-icon" sizes="114x114" href="<?= $apple ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= $icon32 ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= $icon16 ?>">
+    <link rel="mask-icon" href="<?= $maskIcon ?>" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#00aba9">
     <meta name="theme-color" content="#ffffff">
 
