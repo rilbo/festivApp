@@ -6,30 +6,24 @@ use Cake\Event\EventInterface;
 class PostsController extends AppController{
 
     public function index(){
-        $posts = $this->Posts->find('all')
-            ->contain(['Users', 'Festivals', 'Likes'])
-            ->order(['Posts.created' => 'DESC']);
-
-        // recuperer tous les post en fonction des utilisateurs qu'une personne connecté suit 
-
         // variable id de la personne connecté 
         $id = $this->request->getAttribute('identity')->id;
 
-        $follow = $this->Posts->Users->Follows->find('all')
-            ->where(['follows.id_user' => $id])
-            ->contain(['Users']);
+        $follow = $this->Posts->Users->Follows->find()->where(['id_user' => $id])->all();
 
         // je recupere dans $follow l'id_user_following de la personne connecté
-        $idTab = [];
-        foreach ($follow as $f) {
-            $id_following = $f->id_user_following;
-            $idTab[] = $id_following;
+        $idTab = [$id];
+        // si le $follow est vide alors je continue avec le $idTab
+        if(!$follow->isEmpty()){
+            foreach ($follow as $f) {
+                $id_following = $f->id_user_following;
+                $idTab[] = $id_following;
+            }
         }
-        $idTab[] = $id;
-        $posts = $posts->where(['posts.id_user IN' => $idTab]);
-
-        
-        
+        $posts = $this->Posts->find('all')
+            ->contain(['Users', 'Festivals', 'Likes'])
+            ->where(['Posts.id_user IN' => $idTab])
+            ->order(['Posts.created' => 'DESC']);
 
         $this->set(compact('posts'));
     } 
@@ -75,7 +69,7 @@ class PostsController extends AppController{
                 $festival->id_user = $this->request->getAttribute('identity')->id;
                 if($this->Posts->Festivals->save($festival)){
                     $post->id_festival = $festival->id;
-                    $request = $this->fetchTable('requests')->newEmptyEntity();
+                    $request = $this->fetchTable('Requests')->newEmptyEntity();
                     // créer une request pour le festival
                     $request->title = $festival->title;
                     $request->content  = "Un festival qui n'existait pas a été créé avec le titre : ".$festival->title." par ".$pseudo;
