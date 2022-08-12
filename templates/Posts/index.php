@@ -19,7 +19,7 @@
                 <!-- modifier son profil pour ajouter une photo ou une description -->
                 <?php if (!($this->request->getCookie('firstEdit')) ) : ?>
                     <p>Modifier votre profil pour ajouter une photo ou une description</p>
-                    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'edit', $this->request->getAttribute("identity")->id])?>">Modifier votre profil</a>
+                    <a class="btn" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'edit', $this->request->getAttribute("identity")->id])?>">Modifier votre profil</a>
                 <?php endif; ?>
             </div>
         <?php else : ?>

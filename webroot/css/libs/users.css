@@ -29,7 +29,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  min-height: calc(100vh - 390px);
+  margin-bottom: 70px;
 }
 .container #user-posts a {
   width: 33.3333333333%;
