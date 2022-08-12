@@ -41,27 +41,33 @@ class UsersController extends AppController{
         }else{
             $user = $this->Users->newEmptyEntity();
             if($this->request->is('post', 'put')){
-                $user = $this->Users->patchEntity($user, $this->request->getData());
-                $pseudo = $this->request->getData('pseudo');
-                $email = $this->request->getData('email');
-
-                if ($this->Users->findByPseudo($pseudo)->count() > 0) {
-                    $this->Flash->error('Pseudo already taken');
-                }elseif ($this->Users->findByEmail($email)->count() > 0) {
-                    $this->Flash->error('Email already taken');
+                $password = $this->request->getData('password');
+                if (empty($password)) {
+                    $this->Flash->error('Veuillez entrer un mot de passe');
                 }else{
-                    if ($this->request->getData('password') == $this->request->getData('password_confirm')){
-                        if ($this->Users->save($user)) {
-                            $this->Flash->success('Your account has been created');
-                            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
-                        }else{
-                            $this->Flash->error('An error occured');
-                        }
+                    $user = $this->Users->patchEntity($user, $this->request->getData());
+                    $pseudo = $this->request->getData('pseudo');
+                    $email = $this->request->getData('email');
+
+                    if ($this->Users->findByPseudo($pseudo)->count() > 0) {
+                        $this->Flash->error('Pseudo already taken');
+                    }elseif ($this->Users->findByEmail($email)->count() > 0) {
+                        $this->Flash->error('Email already taken');
                     }else{
-                        $this->Flash->error('The passwords do not match');
+                        if ($this->request->getData('password') == $this->request->getData('password_confirm')){
+                            if ($this->Users->save($user)) {
+                                $this->Flash->success('Your account has been created');
+                                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+                            }else{
+                                $this->Flash->error('An error occured');
+                            }
+                        }else{
+                            $this->Flash->error('The passwords do not match');
+                        }
+                        return $this->Flash->error('Your account could not be created');
                     }
-                    return $this->Flash->error('Your account could not be created');
                 }
+                
             }
             $this->set(compact('user'));
         }
