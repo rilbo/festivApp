@@ -1,0 +1,33 @@
+{
+    "name": "Festiv'App",
+    "short_name": "Festiv'App",
+    "icons": [
+        {
+            "src": "/img/logo/maskable_icon192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/img/logo/logo192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/logo/logo256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/logo/logo512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "lang": "fr-FR",
+    "start_url": "https://festivapp.valentin-muller.fr/",
+    "scope": "https://festivapp.valentin-muller.fr/"
+}

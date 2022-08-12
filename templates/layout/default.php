@@ -19,21 +19,12 @@ $cakeDescription = "Festiv'app";
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
-    <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", function() {
-                navigator.serviceWorker
-                .register("/sw.js")
-                .then(res => console.log("service worker registered"))
-                .catch(err => console.log("service worker not registered", err))
-            })
-        }
-    </script>
+    
     <?php
-        $apple = $this->Html->Url->Build('favicon/apple-touch-icon.png');
-        $icon32 = $this->Html->Url->Build('favicon/favicon-32x32.png');
-        $icon16 = $this->Html->Url->Build('favicon/favicon-16x16.png');
-        $maskIcon = $this->Html->Url->Build('favicon/safari-pinned-tab.svg');
+        $apple = $this->Html->Url->Build('/favicon/apple-touch-icon.png');
+        $icon32 = $this->Html->Url->Build('/favicon/favicon-32x32.png');
+        $icon16 = $this->Html->Url->Build('/favicon/favicon-16x16.png');
+        $maskIcon = $this->Html->Url->Build('/favicon/safari-pinned-tab.svg');
     ?>
     <link rel="apple-touch-icon" sizes="114x114" href="<?= $apple ?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= $icon32 ?>">
@@ -42,7 +33,15 @@ $cakeDescription = "Festiv'app";
     <meta name="msapplication-TileColor" content="#00aba9">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="manifest" href="favicon/manifest.json">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            console.log('je suis dans le service worker');
+            navigator.serviceWorker.register('/sw.js');
+        }
+    </script>
+    
 </head>
 <body>
     <?php if ($this->request->getAttribute('identity') != null) :?>
